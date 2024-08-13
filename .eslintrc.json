@@ -12,7 +12,13 @@
   },
   "rules":  {
     "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": ["error",
+      {
+      "html": "ignore"
+      }
+    ]
   },
   "env": {
     "browser": true,
