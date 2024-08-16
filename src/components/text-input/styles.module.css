@@ -1,0 +1,8 @@
+.input {
+  padding: 10px;
+  height: 40px;
+}
+
+.input:invalid {
+  border-color: red;
+}

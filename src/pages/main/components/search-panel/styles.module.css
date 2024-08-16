@@ -1,0 +1,47 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+  column-gap: 40px;
+  row-gap: 20px;
+  padding: 50px 20px;
+  background-color: white;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: grey;
+}
+
+.search-value {
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (width >= 600px) {
+  .container {
+    align-items: center;
+    flex-direction: row;
+    row-gap: 0;
+  }
+
+  .search-value {
+    width: 500px;
+  }
+
+  .controls {
+    column-gap: 40px;
+  }
+}
