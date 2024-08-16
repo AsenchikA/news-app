@@ -1,10 +1,11 @@
 {
   "root": true,
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "jest"],
   "extends": [
     "airbnb",
     "airbnb-typescript",
-    "prettier"
+    "prettier",
+    "plugin:jest/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -24,5 +25,13 @@
     "browser": true,
     "node": true
   },
-  "ignorePatterns": ["/dist", "/node_modules", "webpack.config.js"]
+  "ignorePatterns": ["/dist", "/node_modules", "*.config.js", "/setup-tests.js"],
+  "overrides": [
+    {
+        "files": ["*.test.tsx"],
+        "rules": {
+            "no-unused-expressions": "off"
+        }
+    }
+]
 }

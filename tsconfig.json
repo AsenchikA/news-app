@@ -13,6 +13,7 @@
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"]
     },
+    "types": ["node", "@testing-library/jest-dom"]
   },
   "include": ["./src/**/*"]
 }
