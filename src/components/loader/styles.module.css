@@ -1,0 +1,36 @@
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: loading 1s infinite linear alternate;
+}
+
+@keyframes loading {
+  0% {
+    box-shadow:
+      20px 0 #00f,
+      -20px 0 #aeaeff;
+    background: #00f;
+  }
+
+  33% {
+    box-shadow:
+      20px 0 #00f,
+      -20px 0 #aeaeff;
+    background: #aeaeff;
+  }
+
+  66% {
+    box-shadow:
+      20px 0 #aeaeff,
+      -20px 0 #00f;
+    background: #aeaeff;
+  }
+
+  100% {
+    box-shadow:
+      20px 0 #aeaeff,
+      -20px 0 #00f;
+    background: #00f;
+  }
+}

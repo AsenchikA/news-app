@@ -1,3 +1,11 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 140px);
+}
+
 .feed {
   display: flex;
   justify-content: center;

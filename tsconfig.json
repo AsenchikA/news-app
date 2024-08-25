@@ -11,7 +11,9 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "paths": {
       "@components/*": ["components/*"],
-      "@utils/*": ["utils/*"]
+      "@constants/*": ["constants/*"],
+      "@store/*": ["store/*"],
+      "@app-types/*": ["types/*"],
     },
     "types": ["node", "@testing-library/jest-dom"]
   },

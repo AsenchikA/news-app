@@ -19,7 +19,9 @@
       {
       "html": "ignore"
       }
-    ]
+    ],
+    "no-param-reassign": ["error", { "props": false }],
+    "react/jsx-boolean-value": "off"
   },
   "env": {
     "browser": true,

@@ -14,8 +14,9 @@
 
 .card-title {
   flex-grow: 1;
-  cursor: pointer;
   font-size: 20px;
+  text-decoration: none;
+  color: black;
 }
 
 .card-date {

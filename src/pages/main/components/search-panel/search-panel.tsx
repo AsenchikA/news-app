@@ -1,32 +1,44 @@
 import { Button } from '@components/button';
-import { DateInput } from '@components/date-input';
 import { TextInput } from '@components/text-input';
-import { getCurrentDate } from '@utils/index';
-import React, { ChangeEvent, useCallback, useMemo, useState } from 'react';
+import { useAppDispatch } from '@store/hooks';
+import { fetchArticles } from '@store/slices/articles';
+import React, { ChangeEvent, useCallback, useState, FormEvent } from 'react';
+import { DateSelect } from '../date-select';
+import { SourceSelect } from '../source-select';
 
 import styles from './styles.module.css';
 
 export const SearchPanel = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const [date, setDate] = useState(getCurrentDate());
+  const dispatch = useAppDispatch();
 
-  const currentDate = useMemo(() => getCurrentDate(), []);
+  const [searchValue, setSearchValue] = useState('');
+  const [fromDateTime, setFromDateTime] = useState('');
+  const [toDateTime, setToDateTime] = useState('');
+  const [source, setSource] = useState('');
 
   const onSearchValueChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   }, []);
 
-  const onDateChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setDate(event.target.value);
+  const onDatesChange = useCallback((from: string, to: string) => {
+    setFromDateTime(from);
+    setToDateTime(to);
   }, []);
 
+  const onSearchButtonClick = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      dispatch(fetchArticles({ searchInput: searchValue, from: fromDateTime, to: toDateTime, source }));
+    },
+    [searchValue, fromDateTime, toDateTime, source]
+  );
+
   return (
-    <div className={styles.container}>
+    <form className={styles.container} onSubmit={onSearchButtonClick}>
       <TextInput className={styles['search-value']} value={searchValue} onChange={onSearchValueChange} />
-      <div className={styles.controls}>
-        <DateInput value={date} max={currentDate} onChange={onDateChange} />
-        <Button text="Search" />
-      </div>
-    </div>
+      <DateSelect className={styles['date-select']} onChange={onDatesChange} />
+      <SourceSelect className={styles['source-select']} value={source} onChange={setSource} />
+      <Button text="Search" type="submit" />
+    </form>
   );
 };
