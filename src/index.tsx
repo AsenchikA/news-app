@@ -2,9 +2,11 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { App } from './app';
-import { store } from './store';
+import { setupStore } from './store';
 
 const root = createRoot(document.getElementById('root')!);
+
+const store = setupStore();
 
 root.render(
   <React.StrictMode>

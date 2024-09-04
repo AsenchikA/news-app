@@ -1,12 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { SUCCESS_CODE } from '@constants/index';
 import { RootState } from 'store';
-import { ISource } from '@app-types/index';
-
-interface IGetSourcesResponse {
-  status: 'ok' | 'error';
-  sources: ISource[];
-}
+import { IGetErrorResponse, IGetSourcesResponse, ISource } from '@app-types/index';
 
 const fetchSources = createAsyncThunk('sources/getList', async (_, { rejectWithValue }) => {
   if (!process.env.API_KEY) {
@@ -17,7 +12,7 @@ const fetchSources = createAsyncThunk('sources/getList', async (_, { rejectWithV
 
   const response = await fetch(url, { method: 'GET' });
 
-  const parsedResponse: IGetSourcesResponse = await response.json();
+  const parsedResponse: IGetSourcesResponse | IGetErrorResponse = await response.json();
 
   if (response.status !== SUCCESS_CODE || parsedResponse.status !== 'ok') {
     return rejectWithValue('There is an error, try again later');
@@ -57,6 +52,8 @@ const sourcesSlice = createSlice({
 
 const selectSources = (state: RootState) => state.sources.list;
 
-export { fetchSources, selectSources };
+const selectSourcesStatus = (state: RootState) => state.sources.status;
+
+export { fetchSources, selectSources, selectSourcesStatus };
 
 export default sourcesSlice.reducer;

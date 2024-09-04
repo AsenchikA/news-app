@@ -68,6 +68,8 @@ module.exports = {
       '@constants': path.resolve(__dirname, 'src/constants/'),
       '@store': path.resolve(__dirname, 'src/store/'),
       '@app-types': path.resolve(__dirname, 'src/types/'),
+      '@utils': path.resolve(__dirname, 'src/utils/'),
+      '@mocks': path.resolve(__dirname, 'src/mocks/'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },

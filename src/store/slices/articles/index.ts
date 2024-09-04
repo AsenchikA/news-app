@@ -1,17 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { SUCCESS_CODE } from '@constants/index';
 import { RootState } from 'store';
-import { IArticle } from '@app-types/index';
-
-interface IGetArticlesResponse {
-  status: 'ok' | 'error';
-  totalResults: number;
-  articles: IArticle[];
-}
+import { IArticle, IGetArticlesResponse, IGetErrorResponse } from '@app-types/index';
 
 const fetchArticles = createAsyncThunk<
   IGetArticlesResponse,
-  { searchInput?: string; from?: string; to?: string; source?: string }
+  { searchInput?: string; from?: string; to?: string; source?: string },
+  { rejectValue: string }
 >('articles/getList', async ({ searchInput, from, to, source }, { rejectWithValue }) => {
   if (!process.env.API_KEY) {
     return rejectWithValue('No API key provided');
@@ -39,7 +34,7 @@ const fetchArticles = createAsyncThunk<
 
   const response = await fetch(url, { method: 'GET' });
 
-  const parsedResponse: IGetArticlesResponse = await response.json();
+  const parsedResponse: IGetArticlesResponse | IGetErrorResponse = await response.json();
 
   if (response.status !== SUCCESS_CODE || parsedResponse.status !== 'ok') {
     return rejectWithValue('There is an error, try again later');

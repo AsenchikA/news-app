@@ -25,7 +25,7 @@ export const SearchPanel = () => {
     setToDateTime(to);
   }, []);
 
-  const onSearchButtonClick = useCallback(
+  const onSearchSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       dispatch(fetchArticles({ searchInput: searchValue, from: fromDateTime, to: toDateTime, source }));
@@ -34,7 +34,7 @@ export const SearchPanel = () => {
   );
 
   return (
-    <form className={styles.container} onSubmit={onSearchButtonClick}>
+    <form className={styles.container} onSubmit={onSearchSubmit}>
       <TextInput className={styles['search-value']} value={searchValue} onChange={onSearchValueChange} />
       <DateSelect className={styles['date-select']} onChange={onDatesChange} />
       <SourceSelect className={styles['source-select']} value={source} onChange={setSource} />

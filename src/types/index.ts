@@ -18,3 +18,20 @@ export interface ISource {
   language: string;
   country: string;
 }
+
+export interface IGetSourcesResponse {
+  status: 'ok';
+  sources: ISource[];
+}
+
+export interface IGetErrorResponse {
+  status: 'error';
+  code: string;
+  message: string;
+}
+
+export interface IGetArticlesResponse {
+  status: 'ok';
+  totalResults: number;
+  articles: IArticle[];
+}

@@ -24,7 +24,7 @@ export const SourceSelect: FC<IProps> = ({ className, value, onChange }) => {
   return (
     <Select
       containerClassName={className}
-      multiple={true}
+      data-testid="source-select"
       value={value}
       optionList={optionList}
       onChange={onSelectChange}

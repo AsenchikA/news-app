@@ -21,7 +21,8 @@
       }
     ],
     "no-param-reassign": ["error", { "props": false }],
-    "react/jsx-boolean-value": "off"
+    "react/jsx-boolean-value": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   },
   "env": {
     "browser": true,
