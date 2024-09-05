@@ -1,7 +1,6 @@
 # Basic news app
 
-A simple frontend app that allows users to get news by request.
-It was developed as part of a frontend developer test assignment.
+A simple frontend app that allows users to get news by request.<br />It was developed as a part of a frontend developer test assignment.
 
 ## Features
 
